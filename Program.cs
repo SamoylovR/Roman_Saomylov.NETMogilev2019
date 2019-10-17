@@ -48,7 +48,7 @@ namespace Module2Task1
                                     }
                                     else if (answer == "да" || answer == "1")
                                     {
-                                        taxPercent /= 10;
+                                        taxPercent /= 100;
                                         isParsingDone = true;
                                         isSubmitionDone = true;
                                         break;
@@ -61,7 +61,7 @@ namespace Module2Task1
                             }
                             else
                             {
-                                taxPercent /= 10;
+                                taxPercent /= 100;
                                 isParsingDone = true;
                                 break;
                             }
