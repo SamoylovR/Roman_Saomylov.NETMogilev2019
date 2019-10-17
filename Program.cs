@@ -48,7 +48,6 @@ namespace Module2Task1
                                     }
                                     else if (answer == "да" || answer == "1")
                                     {
-                                        taxPercent /= 100;
                                         isParsingDone = true;
                                         isSubmitionDone = true;
                                         break;
@@ -61,7 +60,6 @@ namespace Module2Task1
                             }
                             else
                             {
-                                taxPercent /= 100;
                                 isParsingDone = true;
                                 break;
                             }
@@ -79,6 +77,8 @@ namespace Module2Task1
 
                 Console.WriteLine("|- Проверьте корректность введённых данных -|");
             }
+
+            taxPercent /= 100;
 
             Console.WriteLine($"Общий налог составляет {(500 * taxPercent) * numberOfCompanies}");
         }
