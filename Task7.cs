@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,30 +33,14 @@ namespace Module3Task7
                 }
                 else if (answer == "да" || answer == "lf")
                 {
-                    while (true)
-                    {
-                        Console.Write("Введите длинну массива, который вы хотите задать: ");
+                    Console.Write("Введите длинну массива, который вы хотите задать: ");
 
-                        if (int.TryParse(Console.ReadLine(), out int length))
-                        {
-                            numbersArray = new int[length];
-                            break;
-                        }
-
-                        Console.WriteLine("|-Проверьте корректность введённых данных-|");
-                    }
+                    numbersArray = new int[ParseNumber<int>()];
 
                     for (int i = 0; i < numbersArray.Length; i++)
                     {
-                        while (true)
-                        {
-                            Console.WriteLine($"Введите {i + 1}-й элемент");
-
-                            if (int.TryParse(Console.ReadLine(), out numbersArray[i]))
-                                break;
-
-                            Console.WriteLine("|-Проверьте корректность введённых данных-|");
-                        }
+                        Console.Write($"Введите {i + 1}-й элемент: ");
+                        numbersArray[i] = ParseNumber<int>();
                     }
                     break;
                 }
@@ -84,6 +69,27 @@ namespace Module3Task7
             if (!isNumbersOut)
             {
                 Console.WriteLine("В данном масиве не было заданных случаев");
+            }
+        }
+
+        static T ParseNumber<T>() where T : struct
+        {
+            while (true)
+            {
+                var converter = TypeDescriptor.GetConverter(typeof(T));
+
+                if (converter != null)
+                {
+                    string number = Console.ReadLine();
+                    try
+                    {
+                        return (T)converter.ConvertFromString(number);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("|-Проверьте корректность введённых данных-|");
+                    }
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,13 @@ namespace Module3Task6
 
             while (true)
             {
-                Console.WriteLine("d u w t e a");
+                Console.WriteLine("Вы хотите самомстоятельно ввести массив?");
 
                 string answer = Console.ReadLine().ToLower();
 
                 if (answer == "нет" || answer == "ytn")
                 {
-                    numbersArray = new int[rnd.Next(5, 50)];
+                    numbersArray = new int[rnd.Next(5, 35)];
 
                     for (int i = 0; i < numbersArray.Length; i++)
                     {
@@ -32,48 +33,53 @@ namespace Module3Task6
                 }
                 else if (answer == "да" || answer == "lf")
                 {
-                    while (true)
-                    {
-                        Console.Write("en t length");
-
-                        if (int.TryParse(Console.ReadLine(), out int length))
-                        {
-                            numbersArray = new int[length];
-                            break;
-                        }
-
-                        Console.WriteLine("err");
-                    }
+                    Console.Write("Введите длинну массива");
+                    numbersArray = new int[ParseNumber<int>()];
 
                     for (int i = 0; i < numbersArray.Length; i++)
                     {
-                        while (true)
-                        {           
-                            Console.WriteLine($"ent num {i + 1}");
+                        Console.WriteLine($"ent num {i + 1}");
 
-                            if (int.TryParse(Console.ReadLine(), out numbersArray[i]))
-                                break;
-
-                            Console.WriteLine("err");
-                        }
+                        numbersArray[i] = ParseNumber<int>();
                     }
                     break;
                 }
 
-                Console.WriteLine("err");
+                Console.WriteLine("Не удалось распознать команду");
             }
 
-            Console.WriteLine("ifrst array");
+            Console.WriteLine("Исходный массив:");
 
             foreach (var n in numbersArray)
-                Console.Write($"{n} ");
+                Console.Write("{0, 3} ", n);
             Console.WriteLine();
 
-            Console.WriteLine("second");
+            Console.WriteLine("Преобразованный массив:");
 
             foreach (var n in numbersArray)
-                Console.Write($"{n * (-1)} ");
+                Console.Write("{0, 3} ", n * (-1));
             Console.WriteLine();
+        }
+
+        static T ParseNumber<T>() where T : struct
+        {
+            while (true)
+            {
+                var converter = TypeDescriptor.GetConverter(typeof(T));
+
+                if (converter != null)
+                {
+                    string number = Console.ReadLine();
+                    try
+                    {
+                        return (T)converter.ConvertFromString(number);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("|-Проверьте корректность введённых данных-|");
+                    }
+                }
+            }
         }
     }
 }

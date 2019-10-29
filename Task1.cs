@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace Module3Task1
 {
@@ -6,43 +7,27 @@ namespace Module3Task1
     {
         static void Main(string[] args)
         {
-            int firstNumber = 0, secondNumber = 0;
-            byte countNegative = 0;
+            bool isAnswerNegative = false;
 
-            while (true)
+            Console.Write("Введите певрое число: ");
+            int firstNumber = ParseNumber<int>();
+            if(firstNumber < 0)
             {
-                bool isParsingDone = false;
-                Console.Write("Введите первое число: ");
-
-                if(int.TryParse(Console.ReadLine(), out firstNumber))
-                {
-                    if (firstNumber < 0)
-                        countNegative++;
-
-                    while (true)
-                    {
-                        Console.Write("Введите второе число: ");
-
-                        if (int.TryParse(Console.ReadLine(), out secondNumber))
-                        {
-                            if (secondNumber < 0)
-                                countNegative++;
-
-                            isParsingDone = true;
-
-                            break;
-                        }
-
-                        Console.WriteLine("|-Проверьте корректность введённых данных-|");
-                    }
-                }
-
-                if (isParsingDone)
-                    break;
-
-                Console.WriteLine("|-Проверьте корректность введённых данных-|");
+                isAnswerNegative = true;
             }
 
+            Console.Write("Введите второе число: ");
+            int secondNumber = ParseNumber<int>();
+            if(secondNumber < 0 && isAnswerNegative == false)
+            {
+                isAnswerNegative = true;
+            }
+            else
+            {
+                isAnswerNegative = false;
+            }
+
+            Console.WriteLine($"{firstNumber} * {secondNumber}");
             firstNumber = Math.Abs(firstNumber);
             secondNumber = Math.Abs(secondNumber);
             int answer = 0;
@@ -52,10 +37,31 @@ namespace Module3Task1
                 answer += firstNumber;
             }
 
-            if (countNegative == 1)
+            if (isAnswerNegative == true)
                 answer = -answer;
 
             Console.WriteLine($"Ответ: {answer}");
+        }
+
+        static T ParseNumber<T>() where T : struct
+        {
+            while (true)
+            {
+                var converter = TypeDescriptor.GetConverter(typeof(T));
+
+                if (converter != null)
+                {
+                    string number = Console.ReadLine();
+                    try
+                    {
+                        return (T)converter.ConvertFromString(number);
+                    }
+                    catch 
+                    {
+                        Console.WriteLine("|-Введите число-|");
+                    }
+                }
+            }
         }
     }
 }
