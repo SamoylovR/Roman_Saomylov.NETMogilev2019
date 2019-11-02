@@ -27,7 +27,7 @@ namespace Module3Task2
 
             Console.WriteLine($"Первые {naturalNumber} натуральных чётных чисел");
             
-            for (int i = 2; i <= naturalNumber * 2; i = i + 2)
+            for (int i = 2; i <= naturalNumber * 2; i += 2)
             {
                 Console.Write($"{i} ");
 

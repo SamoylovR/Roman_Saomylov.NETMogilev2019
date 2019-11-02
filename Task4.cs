@@ -47,8 +47,14 @@ namespace Module3Task4
             if (isNumberNegative)
                 Console.Write("-");
 
-            for(int i = numberString.Length - 1; i >= 0; i--)
+            for (int i = numberString.Length - 1; i >= 0; i--)
+            {
+                if (numberString[i] == '0' && i == numberString.Length - 1)
+                {
+                    continue;
+                }
                 Console.Write(numberString[i]);
+            }
             Console.WriteLine();
         }
     }

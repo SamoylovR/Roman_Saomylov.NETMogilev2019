@@ -45,8 +45,16 @@ namespace Module3Task5
 
                 Console.WriteLine("|-Проверьте корректность введённых данных-|");
             }
+            string resultString = "";
+            for (int i = 0; i < numberString.Length; i++)
+            {
+                if (numberString[i].ToString() != numberToRemove.ToString())
+                {
+                    resultString += numberString[i];
+                }
+            }
 
-            Console.WriteLine($"{numberString.Replace(numberToRemove.ToString(), string.Empty)}");
+            Console.WriteLine($"Результат --> {resultString}");
         }
     }
 }
