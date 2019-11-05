@@ -12,6 +12,7 @@ namespace Module5
         {
             char[,] mainMap = new char[12, 12];
             bool[,] trapMap = new bool[12, 12];
+            bool[,] isTrapActive = new bool[12, 12];
 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
@@ -38,7 +39,7 @@ namespace Module5
             while (gameStatus)
             {
                 FillMainMap(mainMap, out sbyte heroX, out sbyte heroY, out sbyte targetX, out sbyte targetY);
-                FillTrapMap(trapMap, mainMap);
+                FillTrapMap(trapMap, mainMap, isTrapActive);
                 sbyte healthPoints = 10;
 
                 while (isHeroAlive)
@@ -48,22 +49,22 @@ namespace Module5
                     ConsoleKeyInfo button = Console.ReadKey();
                     if (button.KeyChar == 'w' || button.KeyChar == '8' || button.KeyChar == 'ц' || button.Key == ConsoleKey.UpArrow)
                     {
-                        StepProcess(-1, 0, ref heroX, ref heroY, mainMap, trapMap);
+                        StepProcess(-1, 0, ref heroX, ref heroY, mainMap, trapMap, isTrapActive);
                         CheckStep();
                     }
                     else if (button.KeyChar == 's' || button.KeyChar == '2' || button.KeyChar == 'ы' || button.Key == ConsoleKey.DownArrow)
                     {
-                        StepProcess(1, 0, ref heroX, ref heroY, mainMap, trapMap);
+                        StepProcess(1, 0, ref heroX, ref heroY, mainMap, trapMap, isTrapActive);
                         CheckStep();
                     }
                     else if (button.KeyChar == 'a' || button.KeyChar == '4' || button.KeyChar == 'ф' || button.Key == ConsoleKey.LeftArrow)
                     {
-                        StepProcess(0, -1, ref heroX, ref heroY, mainMap, trapMap);
+                        StepProcess(0, -1, ref heroX, ref heroY, mainMap, trapMap, isTrapActive);
                         CheckStep();
                     }
                     else if (button.KeyChar == 'd' || button.KeyChar == '6' || button.KeyChar == 'в' || button.Key == ConsoleKey.RightArrow)
                     {
-                        StepProcess(0, 1, ref heroX, ref heroY, mainMap, trapMap);
+                        StepProcess(0, 1, ref heroX, ref heroY, mainMap, trapMap, isTrapActive);
                         CheckStep();
                     }
                 }
@@ -86,8 +87,9 @@ namespace Module5
 
                 void CheckStep()
                 {
-                    if (trapMap[heroY, heroX])
+                    if (trapMap[heroY, heroX] && isTrapActive[heroY, heroX])
                     {
+                        isTrapActive[heroY, heroX] = false;
                         Random rnd = new Random();
                         healthPoints -= (sbyte)rnd.Next(1, 10);
                         if (healthPoints <= 0)
@@ -109,8 +111,6 @@ namespace Module5
                         Console.WriteLine();
                         return;
                     }
-
-                    RenderMap(mainMap, healthPoints);
                 }
             }
         }
@@ -201,13 +201,14 @@ namespace Module5
             }
         }
 
-        static void FillTrapMap(bool[,] trapMap, char[,] mainMap)
+        static void FillTrapMap(bool[,] trapMap, char[,] mainMap, bool[,] isTrapActive)
         {
             for(int i = 0; i < trapMap.GetLength(0); i++)
             {
                 for (int j = 0; j < trapMap.GetLength(1); j++)
                 {
                     trapMap[i, j] = false;
+                    isTrapActive[i, j] = true;
                 }
             }
 
@@ -225,7 +226,19 @@ namespace Module5
             }
         }
 
-        static void StepProcess(sbyte changeYCordinate, sbyte changeXCordinate, ref sbyte heroX, ref sbyte heroY, char[,] map, bool[,] trapMap)
+        static void OpenMap(char[,] map)
+        {
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int j = 0; j < map.GetLength(1); j++)
+                {
+                    Console.Write($"{map[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void StepProcess(sbyte changeYCordinate, sbyte changeXCordinate, ref sbyte heroX, ref sbyte heroY, char[,] map, bool[,] trapMap, bool[,] isTrapActive)
         {
             if (map[heroY + changeYCordinate, heroX + changeXCordinate] == '#')
             {
