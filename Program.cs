@@ -95,7 +95,8 @@ namespace Module5
                         if (healthPoints <= 0)
                         {
                             isHeroAlive = false;
-                            Console.Clear(); 
+                            Console.Clear();
+                            OpenMap(mainMap, trapMap);
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("\t***Ты проиграл***");
                             return;
@@ -226,13 +227,20 @@ namespace Module5
             }
         }
 
-        static void OpenMap(char[,] map)
+        static void OpenMap(char[,] map, bool[,] trapMap)
         {
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    Console.Write($"{map[i, j]} ");
+                    if (trapMap[i, j])
+                    {
+                        Console.Write("X ");
+                    }
+                    else
+                    {
+                        Console.Write($"{map[i, j]} ");
+                    }
                 }
                 Console.WriteLine();
             }
