@@ -30,6 +30,7 @@ namespace Module5
             Console.ResetColor();
             Console.WriteLine("не потеряв HP");
             Console.WriteLine("На карте расположены 10 ловушек урон которых распределён от 1 до 10\n");
+            Console.WriteLine("Ходьба wasd/arrows/NumPad");
             Console.WriteLine("Нажмите любую клавишу, чтобы продолжить...");
             Console.ReadKey();
             Console.Clear();
