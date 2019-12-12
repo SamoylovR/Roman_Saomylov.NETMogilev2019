@@ -8,5 +8,10 @@ namespace FinanceHelper.BLL
 {
     public interface IDistributor : IRepository<Operation>
     {
+        public double GetMeanIncome();
+
+        public double GetMeanCosts();
+
+        public double GetDelta();
     }
 }

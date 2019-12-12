@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper", "FinanceHelper\FinanceHelper.csproj", "{EB2760B5-74B6-4E90-B7EE-0EAC6CD66CE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper", "FinanceHelper\FinanceHelper.csproj", "{EB2760B5-74B6-4E90-B7EE-0EAC6CD66CE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper.BLL", "FinanceHelper.BLL\FinanceHelper.BLL.csproj", "{1EA74EA2-F285-4B7F-B28D-9E93E8375991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.BLL", "FinanceHelper.BLL\FinanceHelper.BLL.csproj", "{1EA74EA2-F285-4B7F-B28D-9E93E8375991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper.Common", "FinanceHelper.Common\FinanceHelper.Common.csproj", "{7F972CD5-D40A-4EF5-9ABD-45CC5662B9C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.Common", "FinanceHelper.Common\FinanceHelper.Common.csproj", "{7F972CD5-D40A-4EF5-9ABD-45CC5662B9C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper.DAL", "FinanceHelper.DAL\FinanceHelper.DAL.csproj", "{097C6E76-0890-4C19-8EBC-7A175D89AF9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.DAL", "FinanceHelper.DAL\FinanceHelper.DAL.csproj", "{097C6E76-0890-4C19-8EBC-7A175D89AF9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

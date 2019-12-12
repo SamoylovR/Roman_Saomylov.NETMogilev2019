@@ -9,9 +9,11 @@ namespace FinanceHelper
 {
     class Program
     {
+        public static readonly IServiceProvider container = new ContainerBuilder().Build();
+
         static void Main(string[] args)
         {
-            var services = ConfigureServices();
+            var distributor = container.GetService<IDistributor>();
 
             Console.WriteLine("\t\tДобро пожаловать в личный финансовый помощник\n" +
                 "\tЗдесь Вы сможете записывать свои доходы и расходы\n" +
@@ -29,23 +31,13 @@ namespace FinanceHelper
 
                 if (button.KeyChar == 1)
                 {
-                    //Add income
+                    distributor.AddNewOperation();
                 }
                 else if(button.KeyChar == 2)
                 {
                     //Add cost and change bool value
                 }
             }
-        }
-
-        private static IServiceProvider ConfigureServices()
-        {
-            IServiceCollection services = new ServiceCollection();
-
-            services.AddSingleton<IDistributor, Distributor>();
-            services.AddSingleton<IRepository<Operation>, Repository>();
-
-            return services.BuildServiceProvider();
         }
 
         static void RenderTable()
