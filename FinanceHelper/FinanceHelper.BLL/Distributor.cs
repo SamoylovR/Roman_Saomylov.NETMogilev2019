@@ -26,12 +26,12 @@ namespace FinanceHelper.BLL
 
         public IEnumerable<Operation> GetIncome()
         {
-            throw new System.NotImplementedException();
+            return db.GetIncome();
         }
 
         public IEnumerable<Operation> GetCosts()
         {
-            throw new System.NotImplementedException();
+            return db.GetCosts();
         }
 
         public double GetMeanIncome()

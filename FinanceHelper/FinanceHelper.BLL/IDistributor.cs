@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FinanceHelper.BLL
 {
-    interface IDistributor : IRepository<Operation>
+    public interface IDistributor : IRepository<Operation>
     {
     }
 }

@@ -1,4 +1,9 @@
 ﻿using System;
+using FinanceHelper.BLL;
+using FinanceHelper.Common;
+using FinanceHelper.Common.Entity;
+using FinanceHelper.DAL;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FinanceHelper
 {
@@ -6,6 +11,8 @@ namespace FinanceHelper
     {
         static void Main(string[] args)
         {
+            var services = ConfigureServices();
+
             Console.WriteLine("\t\tДобро пожаловать в личный финансовый помощник\n" +
                 "\tЗдесь Вы сможете записывать свои доходы и расходы\n" +
                 "\tТакже Вам будет предоставляться статистика о совершённых операциях\n" +
@@ -29,6 +36,16 @@ namespace FinanceHelper
                     //Add cost and change bool value
                 }
             }
+        }
+
+        private static IServiceProvider ConfigureServices()
+        {
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<IDistributor, Distributor>();
+            services.AddSingleton<IRepository<Operation>, Repository>();
+
+            return services.BuildServiceProvider();
         }
 
         static void RenderTable()
