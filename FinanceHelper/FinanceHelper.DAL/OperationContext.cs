@@ -12,7 +12,5 @@ namespace FinanceHelper.DAL
         {
             Operations = new List<Operation> { };
         }
-
-        //public DbSet<Operation> Operations { get; set; }
     }
 }

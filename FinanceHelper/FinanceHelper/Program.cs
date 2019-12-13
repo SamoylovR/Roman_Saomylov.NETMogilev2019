@@ -27,72 +27,100 @@ namespace FinanceHelper
             bool isProgramRunning = true;
             while (isProgramRunning)
             {
+                RenderTable(distributor.GetIncome(), distributor.GetCosts());
                 ConsoleKeyInfo button = Console.ReadKey();
 
-                if (button.KeyChar == '1')
+
+                if (button.Key == ConsoleKey.NumPad1 || button.KeyChar == '1')
                 {
-                    Console.Clear();
-
-                    Console.Write("Название операции: ");
-                    string name = Console.ReadLine();
-
-                    double sum = 0;
-                    Console.Write("Введите сумму дохода: ");
-                    while (!double.TryParse(Console.ReadLine(), out sum))
-                    {
-                        Console.Write("Введите корректную сумму дохода: ");
-                    }
-
-                    Operation operation = new Operation();
-                    operation.Name = name;
-                    operation.Sum = sum;
+                    Operation operation = MakeOperation("Доход");
                     distributor.AddNewOperation(operation);
                 }
-                else if(button.KeyChar == 2)
+                else if (button.Key == ConsoleKey.NumPad2 || button.KeyChar == '2')
                 {
-                    Console.Clear();
-
-                    Console.Write("Название операции: ");
-                    string name = Console.ReadLine();
-
-                    double sum = 0;
-                    Console.Write("Введите сумму дохода: ");
-                    while (!double.TryParse(Console.ReadLine(), out sum))
-                    {
-                        Console.Write("Введите корректную сумму дохода: ");
-                    }
-
-                    Operation operation = new Operation();
-                    operation.Name = name;
-                    operation.Sum = sum;
+                    Operation operation = MakeOperation("Расход");
                     operation.IsOperationIncome = false;
                     distributor.AddNewOperation(operation);
                 }
+                else if (button.Key == ConsoleKey.F2)
+                {                    
+                    Console.WriteLine($"\nСредняя сумма траты составляет - {Math.Round(distributor.GetMeanCosts(), 2)}\n" +
+                        $"Средняя сумма дохода составляет - {Math.Round(distributor.GetMeanIncome(), 2)}\n\n" +
+                        $"Для возобновления работы программы нажмите любую клавишу...");
 
-                RenderTable(distributor.GetIncome()/*, distributor.GetCosts()*/);
+                    Console.ReadKey();
+                }
+                else if (button.Key == ConsoleKey.F3)
+                {
+                    Console.WriteLine($"\nДельта - {Math.Round(distributor.GetDelta(), 2)}\n\n" +
+                        $"Для возобновления работы программы нажмите любую клавишу...");
+                    Console.ReadKey();
+                }
             }
         }
 
-        static void RenderTable(IEnumerable<Operation> income/*, IEnumerable<Operation> costs*/)
+        static void RenderTable(IEnumerable<Operation> income, IEnumerable<Operation> costs)
         {
             Console.Clear();
 
             Console.WriteLine("Нажмите один из символов для совершения опрерации:\n" +
                 "\t1 - добавить доход\n" +
-                "\t2 - добавить расход\n");
+                "\t2 - добавить расход\n" +
+                "\tF2 - посмотреть средние значения операций\n" +
+                "\tF3 - посмотреть дельту");
+
+
 
             MakeUnderline();
-            Console.WriteLine("\n| {0, 20} | {1, 15} || {2, 20} | {3, 15} |", "Name of Income", "BYN", "Name of Cost", "BYN");
+            Console.WriteLine("\n|| {0, 20} | {1, 15} ||", "Name of Income", "BYN");
             MakeUnderline();
 
+            foreach (var inc in income)
+            {
+                Console.WriteLine("\n|| {0, 20} | {1, 15} ||", inc.Name, inc.Sum);
+                MakeUnderline();
+            }
+            Console.WriteLine("\n\n");
+
+
+            MakeUnderline();
+            Console.WriteLine("\n|| {0, 20} | {1, 15} ||", "Name of Cost", "BYN");
+            MakeUnderline();
+
+            foreach (var cost in costs)
+            {
+                Console.WriteLine("\n|| {0, 20} | {1, 15} ||", cost.Name, cost.Sum);
+                MakeUnderline();
+            }
 
             void MakeUnderline()
             {
-                for (int i = 0; i < 42; i++)
+                for (int i = 0; i < 22; i++)
                 {
                     Console.Write("- ");
                 }
             }
+        }
+
+        public static Operation MakeOperation(string typeOfOperation)
+        {
+            Console.Clear();
+
+            Console.Write($"{typeOfOperation}\nНазвание операции: ");
+            string name = Console.ReadLine();
+
+            double sum = 0;
+            Console.Write("Введите сумму операции: ");
+            while (!double.TryParse(Console.ReadLine(), out sum))
+            {
+                Console.Write("Введите корректную сумму операции: ");
+            }
+
+            Operation operation = new Operation();
+            operation.Name = name;
+            operation.Sum = sum;
+
+            return operation;
         }
     }
 }
