@@ -12,6 +12,6 @@ namespace FinanceHelper.Common.Entity
 
         public string Name { get; set; }
 
-        public bool IsOperationIncome { get; set; }
+        public bool IsOperationIncome { get; set; } = true;
     }
 }
