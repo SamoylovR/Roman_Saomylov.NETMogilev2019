@@ -8,10 +8,10 @@ namespace FinanceHelper.DAL
 {
     public class Repository : IRepository<Operation>
     {
-        private readonly OperationContext db;
+        private readonly IOperationContext db;
 
-        public Repository(OperationContext db)
-        {
+        public Repository(IOperationContext db)
+        { 
             this.db = db;
         }
 

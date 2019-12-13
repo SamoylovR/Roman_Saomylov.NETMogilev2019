@@ -29,9 +29,16 @@ namespace FinanceHelper
                 RenderTable();
                 ConsoleKeyInfo button = Console.ReadKey();
 
-                if (button.KeyChar == 1)
+                if (button.KeyChar == '1')
                 {
-                    distributor.AddNewOperation();
+                    Console.Clear();
+                    Console.Write("Введите сумму дохода: ");
+                    while (!double.TryParse(Console.ReadLine(), out double sum))
+                    {
+                        Console.Write("Введите корректную сумму дохода: ");
+                    }
+
+                    //distributor.AddNewOperation();
                 }
                 else if(button.KeyChar == 2)
                 {
