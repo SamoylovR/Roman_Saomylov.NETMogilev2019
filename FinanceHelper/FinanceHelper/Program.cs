@@ -14,7 +14,7 @@ namespace FinanceHelper
 
         static void Main(string[] args)
         {
-            var distributor = container.GetService<IDistributor>();
+            IDistributor distributor = container.GetService<IDistributor>();
 
             Console.WriteLine("\t\tДобро пожаловать в личный финансовый помощник\n" +
                 "\tЗдесь Вы сможете записывать свои доходы и расходы\n" +
@@ -27,7 +27,6 @@ namespace FinanceHelper
             bool isProgramRunning = true;
             while (isProgramRunning)
             {
-                RenderTable(/*distributor.GetIncome(), distributor.GetCosts()*/);
                 ConsoleKeyInfo button = Console.ReadKey();
 
                 if (button.KeyChar == '1')
@@ -69,10 +68,12 @@ namespace FinanceHelper
                     operation.IsOperationIncome = false;
                     distributor.AddNewOperation(operation);
                 }
+
+                RenderTable(distributor.GetIncome()/*, distributor.GetCosts()*/);
             }
         }
 
-        static void RenderTable(/*IEnumerable<Operation> income, IEnumerable<Operation> costs*/)
+        static void RenderTable(IEnumerable<Operation> income/*, IEnumerable<Operation> costs*/)
         {
             Console.Clear();
 

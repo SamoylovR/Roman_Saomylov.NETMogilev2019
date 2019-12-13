@@ -8,10 +8,10 @@ namespace FinanceHelper.DAL
     {
         public List<Operation> Operations { get; set; }
 
-        //public OperationContext()
-        //{
-        //    Database.EnsureCreated();
-        //}
+        public OperationContext()
+        {
+            Operations = new List<Operation> { };
+        }
 
         //public DbSet<Operation> Operations { get; set; }
     }
