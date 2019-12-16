@@ -4,6 +4,7 @@ using FinanceHelper.BLL;
 using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
 using FinanceHelper.DAL;
+using FinanceHelper.DI;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FinanceHelper

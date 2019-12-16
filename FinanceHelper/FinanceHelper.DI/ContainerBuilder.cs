@@ -9,12 +9,13 @@ namespace FinanceHelper.DI
 {
     public class ContainerBuilder
     {
-        public static IServiceProvider ConfigureServices()
+        public IServiceProvider Build()
         {
-            IServiceCollection services = new ServiceCollection();
+            var services = new ServiceCollection();
 
-            services.AddSingleton<IDistributor, Distributor>();
-            services.AddSingleton<IRepository<Operation>, Repository>();
+            services.AddTransient<IRepository<Operation>, Repository>();
+            services.AddTransient<IDistributor, Distributor>();
+            services.AddTransient<IOperationContext, OperationContext>();
 
             return services.BuildServiceProvider();
         }

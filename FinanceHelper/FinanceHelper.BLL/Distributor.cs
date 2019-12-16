@@ -46,7 +46,7 @@ namespace FinanceHelper.BLL
 
         public double GetDelta()
         {
-            return GetMeanIncome() - GetMeanCosts();
+            return GetMeanIncome() + GetMeanCosts();
         }
 
         private double GetMean(IEnumerable<Operation> operations)
