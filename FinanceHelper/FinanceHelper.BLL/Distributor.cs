@@ -1,6 +1,5 @@
 ﻿using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
-using FinanceHelper.DAL;
 using System.Collections.Generic;
 
 namespace FinanceHelper.BLL

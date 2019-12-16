@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper", "FinanceHelper\FinanceHelper.csproj", "{EB2760B5-74B6-4E90-B7EE-0EAC6CD66CE3}"
 	ProjectSection(ProjectDependencies) = postProject
+		{B833EA0F-7A9A-4773-9F4E-6D4227177844} = {B833EA0F-7A9A-4773-9F4E-6D4227177844}
 		{EC912C4D-9C26-4810-9188-F19D28BB8428} = {EC912C4D-9C26-4810-9188-F19D28BB8428}
 	EndProjectSection
 EndProject
@@ -15,6 +16,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.DAL", "FinanceHelper.DAL\FinanceHelper.DAL.csproj", "{097C6E76-0890-4C19-8EBC-7A175D89AF9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper.DI", "FinanceHelper.DI\FinanceHelper.DI.csproj", "{EC912C4D-9C26-4810-9188-F19D28BB8428}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper.UI", "FinanceHelper.UI\FinanceHelper.UI.csproj", "{B833EA0F-7A9A-4773-9F4E-6D4227177844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +45,10 @@ Global
 		{EC912C4D-9C26-4810-9188-F19D28BB8428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC912C4D-9C26-4810-9188-F19D28BB8428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC912C4D-9C26-4810-9188-F19D28BB8428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B833EA0F-7A9A-4773-9F4E-6D4227177844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B833EA0F-7A9A-4773-9F4E-6D4227177844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B833EA0F-7A9A-4773-9F4E-6D4227177844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B833EA0F-7A9A-4773-9F4E-6D4227177844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
