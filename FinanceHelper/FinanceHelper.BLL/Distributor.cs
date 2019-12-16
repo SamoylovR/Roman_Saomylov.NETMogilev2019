@@ -20,6 +20,11 @@ namespace FinanceHelper.BLL
             {
                 operation.Sum = -operation.Sum;
             }
+            else 
+            {
+                operation.Tax = operation.Sum * 13 / 100;
+                operation.Sum -= operation.Tax;
+            }
 
             db.AddNewOperation(operation);
         }

@@ -73,12 +73,12 @@ namespace FinanceHelper
 
 
             MakeUnderline();
-            Console.WriteLine("\n|| {0, 20} | {1, 15} ||", "Name of Income", "BYN");
+            Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", "Name of Income", "BYN", "Tax, BYN");
             MakeUnderline();
 
             foreach (var inc in income)
             {
-                Console.WriteLine("\n|| {0, 20} | {1, 15} ||", inc.Name, inc.Sum);
+                Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", inc.Name, inc.Sum, inc.Tax);
                 MakeUnderline();
             }
             Console.WriteLine("\n\n");
