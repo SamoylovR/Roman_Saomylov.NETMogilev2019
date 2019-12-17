@@ -30,9 +30,8 @@ namespace FinanceHelper.UI
             while (true)
             {
                 RenderTable(distributor.GetIncome(), distributor.GetCosts());
-                ConsoleKeyInfo button = Console.ReadKey();
 
-                CheckButton(button, distributor);
+                CheckButton(distributor);
             }
         }
 
@@ -102,8 +101,10 @@ namespace FinanceHelper.UI
             return operation;
         }
 
-        public void CheckButton(ConsoleKeyInfo button, IDistributor distributor)
+        public void CheckButton(IDistributor distributor)
         {
+            ConsoleKeyInfo button = Console.ReadKey();
+
             if (button.Key == ConsoleKey.NumPad1 || button.KeyChar == '1')
             {
                 Operation operation = MakeOperation("Доход");
