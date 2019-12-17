@@ -20,6 +20,7 @@ namespace FinanceHelper.DAL
         public void AddNewOperation(Operation operation)
         {
             db.Operations.Add(operation);
+            jsonHandler.AddNewOperation(operation);
         }
 
         public IEnumerable<Operation> GetIncome()

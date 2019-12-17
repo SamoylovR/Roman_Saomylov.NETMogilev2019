@@ -30,9 +30,8 @@ namespace FinanceHelper.UI
             while (true)
             {
                 RenderTable(distributor.GetIncome(), distributor.GetCosts());
-                ConsoleKeyInfo button = Console.ReadKey();
 
-                CheckButton(button, distributor);
+                CheckButton(distributor);
             }
         }
 
@@ -45,7 +44,6 @@ namespace FinanceHelper.UI
                 "\t2 - добавить расход\n" +
                 "\tF2 - посмотреть средние значения операций\n" +
                 "\tF3 - посмотреть дельту");
-
 
 
             MakeUnderline();
@@ -79,31 +77,10 @@ namespace FinanceHelper.UI
             }
         }
 
-        public Operation MakeOperation(string typeOfOperation)
+        public void CheckButton(IDistributor distributor)
         {
-            Console.Clear();
+            ConsoleKeyInfo button = Console.ReadKey();
 
-            Console.Write($"{typeOfOperation}\nНазвание операции: ");
-            string name = Console.ReadLine();
-
-            double sum = 0;
-            Console.Write("Введите сумму операции: ");
-            while (!double.TryParse(Console.ReadLine(), out sum))
-            {
-                Console.Write("Введите корректную сумму операции: ");
-            }
-
-            Operation operation = new Operation
-            {
-                Name = name,
-                Sum = sum
-            };
-
-            return operation;
-        }
-
-        public void CheckButton(ConsoleKeyInfo button, IDistributor distributor)
-        {
             if (button.Key == ConsoleKey.NumPad1 || button.KeyChar == '1')
             {
                 Operation operation = MakeOperation("Доход");
@@ -129,6 +106,30 @@ namespace FinanceHelper.UI
                     $"Для возобновления работы программы нажмите любую клавишу...");
                 Console.ReadKey();
             }
+        }
+
+        public Operation MakeOperation(string typeOfOperation)
+        {
+            Console.Clear();
+            Console.Write($"{typeOfOperation}\nНазвание операции: ");
+
+            string name = Console.ReadLine();
+            double sum = 0;
+
+            Console.Write("Введите сумму операции: ");
+
+            while (!double.TryParse(Console.ReadLine(), out sum))
+            {
+                Console.Write("Введите корректную сумму операции: ");
+            }
+
+            Operation operation = new Operation
+            {
+                Name = name,
+                Sum = sum
+            };
+
+            return operation;
         }
     }
 }
