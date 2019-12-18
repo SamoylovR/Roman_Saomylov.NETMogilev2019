@@ -25,12 +25,12 @@ namespace FinanceHelper.DAL
 
         public IEnumerable<Operation> GetIncome()
         {
-            return db.Operations.Where(op => op.Sum > 0);
+            return jsonHandler.GetIncome();
         }
         
         public IEnumerable<Operation> GetCosts()
         {
-            return db.Operations.Where(op => op.Sum < 0);
+            return jsonHandler.GetCosts(); ;
         }
     }
 }
