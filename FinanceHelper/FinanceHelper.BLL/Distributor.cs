@@ -38,6 +38,11 @@ namespace FinanceHelper.BLL
             return db.GetCosts();
         }
 
+        public void ClearOperationData()
+        {
+            db.ClearOperationData();
+        }
+
         public double GetMeanIncome()
         {
             return GetMean(db.GetIncome());
@@ -57,16 +62,21 @@ namespace FinanceHelper.BLL
         {
             double sum = 0;
             int count = 0;
-            foreach (Operation op in operations)
+            try
             {
-                sum += op.Sum;
-                count++;
-            }
+                foreach (Operation op in operations)
+                {
+                    sum += op.Sum;
+                    count++;
+                }
 
-            if (count != 0)
-            {
-                sum /= count;
+                if (count != 0)
+                {
+                    sum /= count;
+                }
             }
+            catch 
+            { }
 
             return sum;
         }

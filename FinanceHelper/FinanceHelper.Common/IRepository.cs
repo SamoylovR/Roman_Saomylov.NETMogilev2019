@@ -11,5 +11,7 @@ namespace FinanceHelper.Common
         IEnumerable<Operation> GetIncome();
 
         IEnumerable<Operation> GetCosts();
+
+        void ClearOperationData();
     }
 }

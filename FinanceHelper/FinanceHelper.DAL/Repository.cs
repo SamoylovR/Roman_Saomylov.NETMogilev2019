@@ -32,5 +32,10 @@ namespace FinanceHelper.DAL
         {
             return jsonHandler.GetCosts(); ;
         }
+
+        public void ClearOperationData()
+        {
+            jsonHandler.ClearOperationData();
+        }
     }
 }

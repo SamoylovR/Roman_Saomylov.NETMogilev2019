@@ -43,31 +43,40 @@ namespace FinanceHelper.UI
                 "\t1 - добавить доход\n" +
                 "\t2 - добавить расход\n" +
                 "\tF2 - посмотреть средние значения операций\n" +
-                "\tF3 - посмотреть дельту");
+                "\tF3 - посмотреть дельту\n" +
+                "\tF4 - очистить список");
 
 
-            MakeUnderline();
-            Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", "Name of Income", "BYN", "Tax, BYN");
-            MakeUnderline();
-
-            foreach (var inc in income)
+            if (income != null && costs != null)
             {
-                Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", inc.Name, inc.Sum, inc.Tax);
+                MakeUnderline();
+                Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", "Name of Income", "BYN", "Tax, BYN");
+                MakeUnderline();
+
+                foreach (var inc in income)
+                {
+                    Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", inc.Name, inc.Sum, inc.Tax);
+                    MakeUnderline();
+                }
+                Console.WriteLine("\n\n");
+
+
+                MakeUnderline();
+                Console.WriteLine("\n|| {0, 20} | {1, 15} ||", "Name of Cost", "BYN");
+                MakeUnderline();
+
+                foreach (var cost in costs)
+                {
+                    Console.WriteLine("\n|| {0, 20} | {1, 15} ||", cost.Name, cost.Sum);
+                    MakeUnderline();
+                }
+            }
+            else 
+            {
+                MakeUnderline();
+                Console.WriteLine("\n\tДанных пока нет");
                 MakeUnderline();
             }
-            Console.WriteLine("\n\n");
-
-
-            MakeUnderline();
-            Console.WriteLine("\n|| {0, 20} | {1, 15} ||", "Name of Cost", "BYN");
-            MakeUnderline();
-
-            foreach (var cost in costs)
-            {
-                Console.WriteLine("\n|| {0, 20} | {1, 15} ||", cost.Name, cost.Sum);
-                MakeUnderline();
-            }
-
             void MakeUnderline()
             {
                 for (int i = 0; i < 22; i++)
@@ -105,6 +114,10 @@ namespace FinanceHelper.UI
                 Console.WriteLine($"\nДельта - {Math.Round(distributor.GetDelta(), 2)}\n\n" +
                     $"Для возобновления работы программы нажмите любую клавишу...");
                 Console.ReadKey();
+            }
+            else if(button.Key == ConsoleKey.F4)
+            {
+                distributor.ClearOperationData();
             }
         }
 

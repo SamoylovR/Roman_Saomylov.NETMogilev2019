@@ -1,10 +1,9 @@
 ﻿using FinanceHelper.Common.Entity;
 using FinanceHelper.DAL.Interfaces;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace FinanceHelper.DAL
 {
@@ -12,57 +11,71 @@ namespace FinanceHelper.DAL
     {
         private static string filePath = @"../Operations/Operations.json";
 
-        
-
         public void AddNewOperation(Operation operation)
         {
-            string json = JsonConvert.SerializeObject(operation, Formatting.Indented);
-            using (StreamWriter streamWriter = new StreamWriter(filePath, false, System.Text.Encoding.Default))
+            List<Operation> operations = ReadOperations();
+            try
             {
-                streamWriter.WriteLine(json);
+                operations.Add(operation);
             }
+            catch
+            {
+                operations = new List<Operation> { operation };
+            }
+
+            string json = JsonSerializer.Serialize(operations);
+
+            if(!File.Exists(filePath))
+            {
+                File.Create(filePath);
+            }
+
+            File.WriteAllText(filePath, json);
         }
 
         public IEnumerable<Operation> GetCosts()
         {
-            IEnumerable<Operation> operations;
+            IEnumerable<Operation> operations = ReadOperations();
 
-            using (StreamReader streamReader = new StreamReader(filePath))
-            {
-                operations = JsonConvert.DeserializeObject<IEnumerable<Operation>>(streamReader.ReadToEnd());
-            }
-
-            return operations.Where(op => op.Sum < 0);
-
-            Operation op;
-            using (StreamReader streamReader = new StreamReader(filePath))
-            {
-                op = JsonConvert.DeserializeObject<Operation>(streamReader.ReadToEnd());
-            }
-            Console.WriteLine($"{op.Id}, {op.Sum}, {op.Name}, {op.IsOperationIncome}");
-
-            return null;
+            return operations?.Where(op => op.Sum < 0);
         }
 
         public IEnumerable<Operation> GetIncome()
         {
-            IEnumerable<Operation> operations;
+            IEnumerable<Operation> operations = ReadOperations();            
+
+            return operations?.Where(op => op.Sum > 0);
+        }
+
+        public void ClearOperationData()
+        {
+            if (!File.Exists(filePath))
+            {
+                File.Create(filePath);
+            }
+            else
+            {
+                File.WriteAllText(filePath, "");
+            }
+        }
+
+        private List<Operation> ReadOperations()
+        {
+            List<Operation> operations = null;
 
             using (StreamReader streamReader = new StreamReader(filePath))
             {
-                operations = JsonConvert.DeserializeObject<IEnumerable<Operation>>(streamReader.ReadToEnd());
+                var str = streamReader.ReadToEnd();
+                
+                try
+                {
+                    operations = JsonSerializer.Deserialize<List<Operation>>(str);
+                }
+                catch
+                { }
             }
 
-            return operations.Where(op => op.Sum > 0);
-
-
-            Operation op;
-            using (StreamReader streamReader = new StreamReader(filePath))
-            {
-                op = JsonConvert.DeserializeObject<Operation>(streamReader.ReadToEnd());
-            }
-            Console.WriteLine($"{op.Id}, {op.Sum}, {op.Name}, {op.IsOperationIncome}");
-            return null;
+            return operations;
         }
     }
 }
