@@ -1,6 +1,5 @@
 ﻿using FinanceHelper.BLL;
 using FinanceHelper.Common.Entity;
-using FinanceHelper.DI;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
@@ -10,11 +9,10 @@ namespace FinanceHelper.UI
     public class ConsoleApplication
     {
         private readonly IDistributor distributor;
-        public readonly IServiceProvider container = new ContainerBuilder().Build();
 
-        public ConsoleApplication()
+        public ConsoleApplication(IDistributor distributor)
         {
-            distributor = container.GetService<IDistributor>();
+            this.distributor = distributor;
         }
 
         public void Run()
