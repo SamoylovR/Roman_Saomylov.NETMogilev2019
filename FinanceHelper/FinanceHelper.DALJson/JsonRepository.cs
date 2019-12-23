@@ -1,4 +1,5 @@
-﻿using FinanceHelper.Common.Entity;
+﻿using FinanceHelper.Common;
+using FinanceHelper.Common.Entity;
 using FinanceHelper.DALJson.Interfaces;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ namespace FinanceHelper.DALJson
 {
     public class JsonRepository : IJsonRepository
     {
-        private const string filePath = @"../Operations/Operations.json";
+        private const string filePath = Config.filePath;
 
         public void AddNewOperation(Operation operation)
         {

@@ -3,7 +3,7 @@ using FinanceHelper.Common.Entity;
 
 namespace FinanceHelper.BLL
 {
-    public interface IDistributor : IServices<Operation>
+    public interface IDistributor : IService<Operation>
     {
         public double GetMeanIncome();
 

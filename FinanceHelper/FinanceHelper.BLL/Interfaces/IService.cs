@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FinanceHelper.BLL.Interfaces
 {
-    public interface IServices<T>
+    public interface IService<T>
     {
         void AddNewOperation(T operation);
 
