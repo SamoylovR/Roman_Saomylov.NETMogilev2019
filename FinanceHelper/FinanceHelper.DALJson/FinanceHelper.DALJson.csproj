@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinanceHelper.Common\FinanceHelper.Common.csproj" />
-    <ProjectReference Include="..\FinanceHelper.DALJson\FinanceHelper.DALJson.csproj" />
-    <ProjectReference Include="..\FinanceHelper.DAL\FinanceHelper.DAL.csproj" />
   </ItemGroup>
 
 </Project>

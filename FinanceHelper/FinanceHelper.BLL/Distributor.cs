@@ -1,14 +1,15 @@
 ﻿using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
 using System.Collections.Generic;
+using FinanceHelper.DALJson.Interfaces;
 
 namespace FinanceHelper.BLL
 {
     public class Distributor : IDistributor
     {
-        private readonly IRepository<Operation> db;
+        private readonly IJsonRepository db;
 
-        public Distributor(IRepository<Operation> db)
+        public Distributor(IJsonRepository db)
         {
             this.db = db;
         }

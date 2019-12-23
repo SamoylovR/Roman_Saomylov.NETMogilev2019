@@ -1,15 +1,15 @@
 ﻿using FinanceHelper.Common.Entity;
-using FinanceHelper.DAL.Interfaces;
+using FinanceHelper.DALJson.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 
-namespace FinanceHelper.DAL
+namespace FinanceHelper.DALJson
 {
-    public class JsonHandler : IJsonHandler
+    public class JsonRepository : IJsonRepository
     {
-        private static string filePath = @"../Operations/Operations.json";
+        private const string filePath = @"../Operations/Operations.json";
 
         public void AddNewOperation(Operation operation)
         {
@@ -72,7 +72,9 @@ namespace FinanceHelper.DAL
                     operations = JsonSerializer.Deserialize<List<Operation>>(str);
                 }
                 catch
-                { }
+                {
+                    operations = new List<Operation> { };
+                }
             }
 
             return operations;
