@@ -1,5 +1,4 @@
-﻿using FinanceHelper.Common;
-using FinanceHelper.Common.Entity;
+﻿using FinanceHelper.Common.Entity;
 using System.Collections.Generic;
 using FinanceHelper.DALJson.Interfaces;
 
