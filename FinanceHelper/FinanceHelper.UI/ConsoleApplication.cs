@@ -17,13 +17,7 @@ namespace FinanceHelper.UI
 
         public void Run()
         {
-            Console.WriteLine("\t\tДобро пожаловать в личный финансовый помощник\n" +
-                "\tЗдесь Вы сможете записывать свои доходы и расходы\n" +
-                "\tТакже Вам будет предоставляться статистика о совершённых операциях\n" +
-                "\tУчёт ведётся в белорусских рублях (BYN)\n\n" +
-                "Нажмите любую клавишу, чтобы продолжить...");
-
-            Console.ReadKey();
+            SayHello();
 
             while (true)
             {
@@ -31,6 +25,17 @@ namespace FinanceHelper.UI
 
                 CheckButton(distributor);
             }
+        }
+
+        void SayHello()
+        {
+            Console.WriteLine("\t\tДобро пожаловать в личный финансовый помощник\n" +
+               "\tЗдесь Вы сможете записывать свои доходы и расходы\n" +
+               "\tТакже Вам будет предоставляться статистика о совершённых операциях\n" +
+               "\tУчёт ведётся в белорусских рублях (BYN)\n\n" +
+               "Нажмите любую клавишу, чтобы продолжить...");
+
+            Console.ReadKey();
         }
 
         void RenderTable(IEnumerable<Operation> income, IEnumerable<Operation> costs)
