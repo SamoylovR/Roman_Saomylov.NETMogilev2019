@@ -11,7 +11,9 @@
   <ItemGroup>
     <ProjectReference Include="..\FinanceHelper.BLL\FinanceHelper.BLL.csproj" />
     <ProjectReference Include="..\FinanceHelper.Common\FinanceHelper.Common.csproj" />
+    <ProjectReference Include="..\FinanceHelper.DALJson\FinanceHelper.DALJson.csproj" />
     <ProjectReference Include="..\FinanceHelper.DAL\FinanceHelper.DAL.csproj" />
+    <ProjectReference Include="..\FinanceHelper.UI\FinanceHelper.UI.csproj" />
   </ItemGroup>
 
 </Project>

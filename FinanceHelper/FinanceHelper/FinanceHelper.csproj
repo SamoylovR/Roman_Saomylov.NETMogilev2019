@@ -10,8 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FinanceHelper.BLL\FinanceHelper.BLL.csproj" />
-    <ProjectReference Include="..\FinanceHelper.DAL\FinanceHelper.DAL.csproj" />
     <ProjectReference Include="..\FinanceHelper.DI\FinanceHelper.DI.csproj" />
     <ProjectReference Include="..\FinanceHelper.UI\FinanceHelper.UI.csproj" />
   </ItemGroup>

@@ -1,15 +1,16 @@
 ﻿using FinanceHelper.Common.Entity;
-using System;
 using System.Collections.Generic;
 
-namespace FinanceHelper.Common
+namespace FinanceHelper.BLL.Interfaces
 {
-    public interface IRepository<T>
+    public interface IService<T>
     {
         void AddNewOperation(T operation);
 
         IEnumerable<Operation> GetIncome();
 
         IEnumerable<Operation> GetCosts();
+
+        void ClearOperationData();
     }
 }

@@ -21,12 +21,17 @@ namespace FinanceHelper.DAL
 
         public IEnumerable<Operation> GetIncome()
         {
-            return db.Operations.Where(op => op.Sum > 0);
+            return db.Operations?.Where(op => op.Sum > 0);
         }
-        
+
         public IEnumerable<Operation> GetCosts()
         {
-            return db.Operations.Where(op => op.Sum < 0);
+            return db.Operations?.Where(op => op.Sum < 0);
+        }
+
+        public void ClearOperationData()
+        {
+            db.Operations?.Clear();
         }
     }
 }

@@ -1,12 +1,9 @@
-﻿using FinanceHelper.Common;
+﻿using FinanceHelper.BLL.Interfaces;
 using FinanceHelper.Common.Entity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FinanceHelper.BLL
 {
-    public interface IDistributor : IRepository<Operation>
+    public interface IDistributor : IService<Operation>
     {
         public double GetMeanIncome();
 

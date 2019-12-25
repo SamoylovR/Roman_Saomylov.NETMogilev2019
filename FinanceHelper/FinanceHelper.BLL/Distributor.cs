@@ -1,14 +1,14 @@
-﻿using FinanceHelper.Common;
-using FinanceHelper.Common.Entity;
+﻿using FinanceHelper.Common.Entity;
 using System.Collections.Generic;
+using FinanceHelper.DALJson.Interfaces;
 
 namespace FinanceHelper.BLL
 {
     public class Distributor : IDistributor
     {
-        private readonly IRepository<Operation> db;
+        private readonly IJsonRepository db;
 
-        public Distributor(IRepository<Operation> db)
+        public Distributor(IJsonRepository db)
         {
             this.db = db;
         }
@@ -19,7 +19,7 @@ namespace FinanceHelper.BLL
             {
                 operation.Sum = -operation.Sum;
             }
-            else 
+            else
             {
                 operation.Tax = operation.Sum * 13 / 100;
                 operation.Sum -= operation.Tax;
@@ -36,6 +36,11 @@ namespace FinanceHelper.BLL
         public IEnumerable<Operation> GetCosts()
         {
             return db.GetCosts();
+        }
+
+        public void ClearOperationData()
+        {
+            db.ClearOperationData();
         }
 
         public double GetMeanIncome()
@@ -57,15 +62,19 @@ namespace FinanceHelper.BLL
         {
             double sum = 0;
             int count = 0;
-            foreach (Operation op in operations)
-            {
-                sum += op.Sum;
-                count++;
-            }
 
-            if (count != 0)
+            if (operations != null)
             {
-                sum /= count;
+                foreach (Operation op in operations)
+                {
+                    sum += op.Sum;
+                    count++;
+                }
+
+                if (count != 0)
+                {
+                    sum /= count;
+                }
             }
 
             return sum;
