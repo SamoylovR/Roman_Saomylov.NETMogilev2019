@@ -50,11 +50,7 @@ namespace FinanceHelper.DALJson
 
         public void ClearOperationData()
         {
-            if (!File.Exists(filePath))
-            {
-                File.Create(filePath);
-            }
-            else
+            if (File.Exists(filePath))
             {
                 File.WriteAllText(filePath, "");
             }
