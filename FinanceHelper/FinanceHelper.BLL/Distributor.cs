@@ -19,7 +19,7 @@ namespace FinanceHelper.BLL
             {
                 operation.Sum = -operation.Sum;
             }
-            else 
+            else
             {
                 operation.Tax = operation.Sum * 13 / 100;
                 operation.Sum -= operation.Tax;
@@ -62,7 +62,8 @@ namespace FinanceHelper.BLL
         {
             double sum = 0;
             int count = 0;
-            try
+
+            if (operations != null)
             {
                 foreach (Operation op in operations)
                 {
@@ -75,8 +76,6 @@ namespace FinanceHelper.BLL
                     sum /= count;
                 }
             }
-            catch 
-            { }
 
             return sum;
         }
