@@ -13,5 +13,7 @@ namespace FinanceHelper
            ConsoleApplication console = container.GetService<ConsoleApplication>();
            console.Run();
         }        
+
+        //json branch not visible
     }
 }
