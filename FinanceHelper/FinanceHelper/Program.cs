@@ -10,10 +10,8 @@ namespace FinanceHelper
         public static readonly IServiceProvider container = new ContainerBuilder().Build();
         static void Main(string[] args)
         {
-           ConsoleApplication console = container.GetService<ConsoleApplication>();
-           console.Run();
-        }        
-
-        //json branch not visible
+            ConsoleApplication console = container.GetService<ConsoleApplication>();
+            console.Run();
+        }
     }
 }
