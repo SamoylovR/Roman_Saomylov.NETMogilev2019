@@ -4,6 +4,6 @@
     {
         public const string filePath = @"../Operations/Operations.json";
 
-        public const string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=operationsdb;Integrated Security=True";
+        public const string connectionString = @"Server=EPBYMOGW001D;Initial Catalog=operationsdb;Integrated Security=True";
     }
 }

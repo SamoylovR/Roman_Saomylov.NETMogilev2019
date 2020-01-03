@@ -21,13 +21,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.DI", "FinanceHelper.DI\FinanceHelper.DI.csproj", "{EC912C4D-9C26-4810-9188-F19D28BB8428}"
 	ProjectSection(ProjectDependencies) = postProject
 		{611F2437-F4B3-4DE2-AFF3-1D4B32C5AF2A} = {611F2437-F4B3-4DE2-AFF3-1D4B32C5AF2A}
+		{30C7E355-73CD-4AF8-9712-8623835DAAA7} = {30C7E355-73CD-4AF8-9712-8623835DAAA7}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.UI", "FinanceHelper.UI\FinanceHelper.UI.csproj", "{B833EA0F-7A9A-4773-9F4E-6D4227177844}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.DALJson", "FinanceHelper.DALJson\FinanceHelper.DALJson.csproj", "{611F2437-F4B3-4DE2-AFF3-1D4B32C5AF2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceHelper.DALdb", "FinanceHelper.DALdb\FinanceHelper.DALdb.csproj", "{30C7E355-73CD-4AF8-9712-8623835DAAA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceHelper.DALdb", "FinanceHelper.DALdb\FinanceHelper.DALdb.csproj", "{30C7E355-73CD-4AF8-9712-8623835DAAA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
