@@ -1,13 +1,9 @@
-﻿using FinanceHelper.DI;
-using FinanceHelper.UI;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using FinanceHelper.UI;
 
 namespace FinanceHelper
 {
     class Program
     {
-        public static readonly IServiceProvider container = new ContainerBuilder().Build();
         static void Main(string[] args)
         {
             ConsoleApplication console = container.GetService<ConsoleApplication>();
