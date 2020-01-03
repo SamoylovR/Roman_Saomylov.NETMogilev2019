@@ -26,7 +26,7 @@ namespace FinanceHelper.DALJson
 
             string json = JsonSerializer.Serialize(operations);
 
-            if(!File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
                 File.Create(filePath);
             }
@@ -43,7 +43,7 @@ namespace FinanceHelper.DALJson
 
         public IEnumerable<Operation> GetIncome()
         {
-            IEnumerable<Operation> operations = ReadOperations();            
+            IEnumerable<Operation> operations = ReadOperations();
 
             return operations?.Where(op => op.Sum > 0);
         }
@@ -63,7 +63,7 @@ namespace FinanceHelper.DALJson
             using (StreamReader streamReader = new StreamReader(filePath))
             {
                 var str = streamReader.ReadToEnd();
-                
+
                 try
                 {
                     operations = JsonSerializer.Deserialize<List<Operation>>(str);
