@@ -50,6 +50,7 @@ namespace FinanceHelper.DALdb
                         });
                     }
                 }
+                reader.Close();
             }
 
             return operations;
@@ -79,6 +80,7 @@ namespace FinanceHelper.DALdb
                         });
                     }
                 }
+                reader.Close();
             }
 
             return operations;
