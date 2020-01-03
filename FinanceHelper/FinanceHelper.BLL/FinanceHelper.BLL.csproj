@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinanceHelper.Common\FinanceHelper.Common.csproj" />
+    <ProjectReference Include="..\FinanceHelper.DALdb\FinanceHelper.DALdb.csproj" />
     <ProjectReference Include="..\FinanceHelper.DALJson\FinanceHelper.DALJson.csproj" />
     <ProjectReference Include="..\FinanceHelper.DAL\FinanceHelper.DAL.csproj" />
   </ItemGroup>

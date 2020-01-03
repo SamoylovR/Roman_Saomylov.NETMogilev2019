@@ -6,9 +6,8 @@ namespace FinanceHelper
     {
         static void Main(string[] args)
         {
-            ConsoleApplication console = new ConsoleApplication();
-
+            ConsoleApplication console = container.GetService<ConsoleApplication>();
             console.Run();
-        }        
+        }
     }
 }
