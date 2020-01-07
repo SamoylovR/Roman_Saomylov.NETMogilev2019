@@ -1,8 +1,8 @@
 ﻿using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
 using FinanceHelper.DALdb.Interfaces;
-using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace FinanceHelper.DALdb
@@ -14,10 +14,40 @@ namespace FinanceHelper.DALdb
             using (SqlConnection connection = new SqlConnection(Config.connectionString))
             {
                 connection.Open();
-                string sqlAdd = $"Insert Into Operations (Sum, Name, Tax, IsOperationIncome) " +
-                                $"values ({operation.Sum}, '{operation.Name}', {operation.Tax}, {Convert.ToByte(operation.IsOperationIncome)})";
+
+                string sqlAdd = "AddOperation";
 
                 SqlCommand addCommand = new SqlCommand(sqlAdd, connection);
+                addCommand.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter opSum = new SqlParameter
+                {
+                    ParameterName = "@sum",
+                    Value = operation.Sum
+                };
+                addCommand.Parameters.Add(opSum);
+
+                SqlParameter opName = new SqlParameter
+                {
+                    ParameterName = "@name",
+                    Value = operation.Name
+                };
+                addCommand.Parameters.Add(opName);
+
+                SqlParameter opTax = new SqlParameter
+                {
+                    ParameterName = "@tax",
+                    Value = operation.Tax
+                };
+                addCommand.Parameters.Add(opTax);
+
+                SqlParameter opIsOperationIncome = new SqlParameter
+                {
+                    ParameterName = "@IsOperationIncome",
+                    Value = operation.IsOperationIncome
+                };
+                addCommand.Parameters.Add(opIsOperationIncome);
+
                 addCommand.ExecuteNonQuery();
             }
         }

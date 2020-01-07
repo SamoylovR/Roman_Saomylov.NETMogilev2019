@@ -129,10 +129,9 @@ namespace FinanceHelper.UI
             Console.Write($"{typeOfOperation}\nНазвание операции: ");
 
             string name = Console.ReadLine();
-            double sum = 0;
-
             Console.Write("Введите сумму операции: ");
 
+            double sum;
             while (!double.TryParse(Console.ReadLine(), out sum))
             {
                 Console.Write("Введите корректную сумму операции: ");
