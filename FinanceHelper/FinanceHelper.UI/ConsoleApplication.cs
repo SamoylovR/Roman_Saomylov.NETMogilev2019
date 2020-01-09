@@ -69,7 +69,7 @@ namespace FinanceHelper.UI
 
                 foreach (var cost in costs)
                 {
-                    Console.WriteLine("\n|| {0, 30} | {1, 15} ||", cost.Name, cost.Sum);
+                    Console.WriteLine($"\n|| {cost.Name, 30} | {cost.Sum, 15} ||");
                     MakeUnderline();
                 }
             }
