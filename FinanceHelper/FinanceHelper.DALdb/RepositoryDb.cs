@@ -1,6 +1,7 @@
 ﻿using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
 using FinanceHelper.DALdb.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -64,22 +65,27 @@ namespace FinanceHelper.DALdb
             using (SqlConnection connection = new SqlConnection(Config.connectionString))
             {
                 connection.Open();
-                string sqlGetCosts = $"Select * From Operations Where Sum < 0";
+                //string sqlGetCosts = $"Select * From Operations Where Sum < 0";
+                string sqlGetCosts = $"GetCosts";
 
                 SqlCommand costsCommand = new SqlCommand(sqlGetCosts, connection);
+                costsCommand.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader = costsCommand.ExecuteReader();
 
-                if (reader.HasRows)
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                foreach (DataRow row in dataTable.Rows)
                 {
-                    while (reader.Read())
+                    Operation operation = new Operation
                     {
-                        operations.Add(new Operation
-                        {
-                            Sum = reader.GetDouble(1),
-                            Name = reader.GetString(2)
-                        });
-                    }
+                        Name = row["Name"].ToString(),
+                        Sum = Convert.ToDouble(row["Sum"])
+                    };
+
+                    operations.Add(operation);
                 }
+
                 reader.Close();
             }
 
@@ -93,23 +99,28 @@ namespace FinanceHelper.DALdb
             using (SqlConnection connection = new SqlConnection(Config.connectionString))
             {
                 connection.Open();
-                string sqlGetCosts = $"Select * From Operations Where Sum > 0";
+                //string sqlGetIncome = $"Select * From Operations Where Sum > 0";
+                string sqlGetIncome = $"GetIncome";
 
-                SqlCommand costsCommand = new SqlCommand(sqlGetCosts, connection);
-                SqlDataReader reader = costsCommand.ExecuteReader();
+                SqlCommand incomeCommand = new SqlCommand(sqlGetIncome, connection);
+                incomeCommand.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = incomeCommand.ExecuteReader();
 
-                if (reader.HasRows)
+                DataTable dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                foreach (DataRow row in dataTable.Rows)
                 {
-                    while (reader.Read())
+                    Operation operation = new Operation
                     {
-                        operations.Add(new Operation
-                        {
-                            Sum = reader.GetDouble(1),
-                            Name = reader.GetString(2),
-                            Tax = reader.GetDouble(3)
-                        });
-                    }
+                        Name = row["Name"].ToString(),
+                        Tax = Convert.ToDouble(row["Tax"]),
+                        Sum = Convert.ToDouble(row["Sum"])
+                    };
+
+                    operations.Add(operation);
                 }
+
                 reader.Close();
             }
 

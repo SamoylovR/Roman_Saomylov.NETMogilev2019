@@ -52,24 +52,24 @@ namespace FinanceHelper.UI
             if (income != null && costs != null)
             {
                 MakeUnderline();
-                Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", "Name of Income", "BYN", "Tax, BYN");
+                Console.WriteLine("\n|| {0, 30} | {1, 15} || {2, 15}", "Name of Income", "BYN", "Tax, BYN");
                 MakeUnderline();
 
                 foreach (var inc in income)
                 {
-                    Console.WriteLine("\n|| {0, 20} | {1, 15} || {2, 15}", inc.Name, inc.Sum, inc.Tax);
+                    Console.WriteLine("\n|| {0, 30} | {1, 15} || {2, 15}", inc.Name, inc.Sum, inc.Tax);
                     MakeUnderline();
                 }
                 Console.WriteLine("\n\n");
 
 
                 MakeUnderline();
-                Console.WriteLine("\n|| {0, 20} | {1, 15} ||", "Name of Cost", "BYN");
+                Console.WriteLine("\n|| {0, 30} | {1, 15} ||", "Name of Cost", "BYN");
                 MakeUnderline();
 
                 foreach (var cost in costs)
                 {
-                    Console.WriteLine("\n|| {0, 20} | {1, 15} ||", cost.Name, cost.Sum);
+                    Console.WriteLine("\n|| {0, 30} | {1, 15} ||", cost.Name, cost.Sum);
                     MakeUnderline();
                 }
             }
@@ -81,7 +81,7 @@ namespace FinanceHelper.UI
             }
             void MakeUnderline()
             {
-                for (int i = 0; i < 22; i++)
+                for (int i = 0; i < 27; i++)
                 {
                     Console.Write("- ");
                 }
@@ -129,6 +129,11 @@ namespace FinanceHelper.UI
             Console.Write($"{typeOfOperation}\nНазвание операции: ");
 
             string name = Console.ReadLine();
+            while (name.Length >= 30)
+            {
+                Console.WriteLine("Имя опреации слишком длинное");
+                name = Console.ReadLine();
+            }
             Console.Write("Введите сумму операции: ");
 
             double sum;
