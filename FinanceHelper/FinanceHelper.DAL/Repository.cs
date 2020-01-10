@@ -1,11 +1,11 @@
-﻿using FinanceHelper.Common;
-using FinanceHelper.Common.Entity;
+﻿using FinanceHelper.Common.Entity;
+using FinanceHelper.DAL.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace FinanceHelper.DAL
 {
-    public class Repository : IRepository<Operation>
+    public class Repository : IRepository
     {
         private readonly IOperationContext db;
 

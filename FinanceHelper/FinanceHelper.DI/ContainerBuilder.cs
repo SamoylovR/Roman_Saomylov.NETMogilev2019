@@ -4,6 +4,8 @@ using FinanceHelper.Common.Entity;
 using FinanceHelper.DAL;
 using FinanceHelper.DALdb;
 using FinanceHelper.DALdb.Interfaces;
+using FinanceHelper.DALEF;
+using FinanceHelper.DALEF.Interfaces;
 using FinanceHelper.DALJson;
 using FinanceHelper.DALJson.Interfaces;
 using FinanceHelper.UI;
@@ -23,7 +25,10 @@ namespace FinanceHelper.DI
             services.AddTransient<IOperationContext, OperationContext>();
             services.AddTransient<IJsonRepository, JsonRepository>();
             services.AddTransient<IRepositoryDb, RepositoryDb>();
+            services.AddTransient<IEntityRepository, EntityRepository>();
             services.AddTransient<ConsoleApplication>();
+
+            services.AddDbContext<ApplicationContext>();
 
             return services.BuildServiceProvider();
         }

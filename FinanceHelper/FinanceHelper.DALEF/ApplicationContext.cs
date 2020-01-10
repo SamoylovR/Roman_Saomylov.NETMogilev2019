@@ -1,7 +1,6 @@
 ﻿using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace FinanceHelper.DALEF
 {

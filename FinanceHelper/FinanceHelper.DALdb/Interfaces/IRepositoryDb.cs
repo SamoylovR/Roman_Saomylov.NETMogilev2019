@@ -5,5 +5,6 @@ namespace FinanceHelper.DALdb.Interfaces
 {
     public interface IRepositoryDb : IRepository<Operation>
     {
+
     }
 }

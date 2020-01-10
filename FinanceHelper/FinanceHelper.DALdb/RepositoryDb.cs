@@ -55,7 +55,7 @@ namespace FinanceHelper.DALdb
 
         public void ClearOperationData()
         {
-
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Operation> GetCosts()
