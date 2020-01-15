@@ -1,14 +1,14 @@
 ﻿using FinanceHelper.Common.Entity;
 using System.Collections.Generic;
-using FinanceHelper.DALJson.Interfaces;
+using FinanceHelper.DALEF.Interfaces;
 
 namespace FinanceHelper.BLL
 {
     public class Distributor : IDistributor
     {
-        private readonly IJsonRepository db;
+        private readonly IEntityRepository db;
 
-        public Distributor(IJsonRepository db)
+        public Distributor(IEntityRepository db)
         {
             this.db = db;
         }
@@ -38,9 +38,9 @@ namespace FinanceHelper.BLL
             return db.GetCosts();
         }
 
-        public void ClearOperationData()
+        public void ClearDataOfOperation()
         {
-            db.ClearOperationData();
+            db.ClearDataOfOperation();
         }
 
         public double GetMeanIncome()

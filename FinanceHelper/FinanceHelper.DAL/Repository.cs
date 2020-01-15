@@ -1,15 +1,15 @@
-﻿using FinanceHelper.Common;
-using FinanceHelper.Common.Entity;
+﻿using FinanceHelper.Common.Entity;
+using FinanceHelper.DAL.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace FinanceHelper.DAL
 {
-    public class Repository : IRepository<Operation>
+    public class OperationRepository : IOperationRepository
     {
         private readonly IOperationContext db;
 
-        public Repository(IOperationContext db)
+        public OperationRepository(IOperationContext db)
         { 
             this.db = db;
         }
@@ -29,7 +29,7 @@ namespace FinanceHelper.DAL
             return db.Operations?.Where(op => op.Sum < 0);
         }
 
-        public void ClearOperationData()
+        public void ClearDataOfOperation()
         {
             db.Operations?.Clear();
         }

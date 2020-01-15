@@ -1,4 +1,6 @@
-﻿using FinanceHelper.UI;
+﻿using FinanceHelper.DI;
+using FinanceHelper.UI;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FinanceHelper
 {
@@ -6,9 +8,8 @@ namespace FinanceHelper
     {
         static void Main(string[] args)
         {
-            ConsoleApplication console = new ConsoleApplication();
-
+            ConsoleApplication console = new ContainerBuilder().Build().GetService<ConsoleApplication>();
             console.Run();
-        }        
+        }
     }
 }
