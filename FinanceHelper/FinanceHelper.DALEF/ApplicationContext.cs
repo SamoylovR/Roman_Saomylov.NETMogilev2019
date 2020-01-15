@@ -8,14 +8,9 @@ namespace FinanceHelper.DALEF
     {
         public DbSet<Operation> Operations { get; set; }
 
-        public ApplicationContext()
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
             Database.EnsureCreated();
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(Config.connectionString);
         }
     }
 }

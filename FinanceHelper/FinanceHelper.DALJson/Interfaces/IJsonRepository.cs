@@ -5,6 +5,5 @@ namespace FinanceHelper.DALJson.Interfaces
 {
     public interface IJsonRepository : IRepository<Operation>
     {
-        void ClearOperationData();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using FinanceHelper.Common.Entity;
 using System.Collections.Generic;
-using FinanceHelper.DALdb.Interfaces;
 using FinanceHelper.DALEF.Interfaces;
 
 namespace FinanceHelper.BLL
@@ -39,9 +38,9 @@ namespace FinanceHelper.BLL
             return db.GetCosts();
         }
 
-        public void ClearOperationData()
+        public void ClearDataOfOperation()
         {
-            db.ClearOperationData();
+            db.ClearDataOfOperation();
         }
 
         public double GetMeanIncome()

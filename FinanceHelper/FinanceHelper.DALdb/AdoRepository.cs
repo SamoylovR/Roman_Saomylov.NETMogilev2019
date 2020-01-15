@@ -1,14 +1,14 @@
 ﻿using FinanceHelper.Common;
 using FinanceHelper.Common.Entity;
-using FinanceHelper.DALdb.Interfaces;
+using FinanceHelper.DALADO.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace FinanceHelper.DALdb
+namespace FinanceHelper.DALADO
 {
-    public class RepositoryDb : IRepositoryDb
+    public class AdoRepository : IAdoRepository
     {
         public void AddNewOperation(Operation operation)
         {
@@ -53,9 +53,17 @@ namespace FinanceHelper.DALdb
             }
         }
 
-        public void ClearOperationData()
+        public void ClearDataOfOperation()
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(Config.connectionString))
+            {
+                string sqlClear = "TRUNCATE TABLE [Operations]";
+
+                connection.Open();
+                SqlCommand clearCommand = new SqlCommand(sqlClear, connection);
+
+                clearCommand.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<Operation> GetCosts()

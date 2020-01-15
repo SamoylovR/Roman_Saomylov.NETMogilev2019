@@ -1,5 +1,6 @@
 ﻿using FinanceHelper.Common.Entity;
 using FinanceHelper.DALEF.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,8 +21,9 @@ namespace FinanceHelper.DALEF
             db.SaveChanges();
         }
 
-        public void ClearOperationData()
+        public void ClearDataOfOperation()
         {
+            db.Database.ExecuteSqlRaw("TRUNCATE TABLE [Operations]");
         }
 
         public IEnumerable<Operation> GetCosts()

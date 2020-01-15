@@ -119,7 +119,7 @@ namespace FinanceHelper.UI
             }
             else if (button.Key == ConsoleKey.F4)
             {
-                distributor.ClearOperationData();
+                distributor.ClearDataOfOperation();
             }
         }
 

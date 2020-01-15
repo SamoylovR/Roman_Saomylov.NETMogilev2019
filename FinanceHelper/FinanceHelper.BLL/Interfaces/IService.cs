@@ -11,6 +11,6 @@ namespace FinanceHelper.BLL.Interfaces
 
         IEnumerable<Operation> GetCosts();
 
-        void ClearOperationData();
+        void ClearDataOfOperation();
     }
 }

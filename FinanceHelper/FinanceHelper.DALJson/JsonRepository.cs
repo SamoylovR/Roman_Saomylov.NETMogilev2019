@@ -48,7 +48,7 @@ namespace FinanceHelper.DALJson
             return operations?.Where(op => op.Sum > 0);
         }
 
-        public void ClearOperationData()
+        public void ClearDataOfOperation()
         {
             if (File.Exists(filePath))
             {
@@ -60,18 +60,17 @@ namespace FinanceHelper.DALJson
         {
             List<Operation> operations = null;
 
-            using (StreamReader streamReader = new StreamReader(filePath))
+            try
             {
+                StreamReader streamReader = new StreamReader(filePath);
+
                 var str = streamReader.ReadToEnd();
 
-                try
-                {
-                    operations = JsonSerializer.Deserialize<List<Operation>>(str);
-                }
-                catch
-                {
-                    operations = new List<Operation> { };
-                }
+                operations = JsonSerializer.Deserialize<List<Operation>>(str);
+            }
+            catch
+            {
+                operations = new List<Operation> { };
             }
 
             return operations;
